@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b8424aaa-a453-49a9-a69c-6cf8ec03b56c">
+	<property name="REPORT_DATASET" value="[{&quot;name&quot;:&quot;TESTE&quot;,&quot;j4CDataset&quot;:{&quot;datasetType&quot;:&quot;DATASOURCE&quot;,&quot;freeQuery&quot;:false,&quot;jndiConnection&quot;:&quot;jdbc/main&quot;,&quot;sql&quot;:&quot;SELECT\n    ROLE.fk_user ,\n    ROLE.id ,\n    USER.theme ,\n    USER.picture ,\n    USER.password ,\n    USER.name ,\n    USER.login ,\n    USER.email ,\n    USER.id \nFROM\n    ROLE ,\n    USER \nWHERE\n    USER.id \u003d ROLE.fk_user \nlimit $P{DATA_LIMIT}&quot;,&quot;recordLimit&quot;:10,&quot;tables&quot;:[{&quot;name&quot;:&quot;ROLE&quot;}],&quot;joins&quot;:[{&quot;right&quot;:{&quot;parent&quot;:{&quot;name&quot;:&quot;ROLE&quot;},&quot;name&quot;:&quot;fk_user&quot;},&quot;operator&quot;:&quot;EQUALS&quot;,&quot;left&quot;:{&quot;parent&quot;:{&quot;name&quot;:&quot;USER&quot;},&quot;name&quot;:&quot;id&quot;}}],&quot;columns&quot;:[{&quot;parent&quot;:{&quot;name&quot;:&quot;ROLE&quot;},&quot;name&quot;:&quot;fk_user&quot;,&quot;type&quot;:&quot;VARCHAR&quot;},{&quot;parent&quot;:{&quot;name&quot;:&quot;ROLE&quot;},&quot;name&quot;:&quot;id&quot;,&quot;type&quot;:&quot;VARCHAR&quot;},{&quot;parent&quot;:{&quot;name&quot;:&quot;USER&quot;},&quot;name&quot;:&quot;theme&quot;,&quot;type&quot;:&quot;VARCHAR&quot;},{&quot;parent&quot;:{&quot;name&quot;:&quot;USER&quot;},&quot;name&quot;:&quot;picture&quot;,&quot;type&quot;:&quot;VARCHAR&quot;},{&quot;parent&quot;:{&quot;name&quot;:&quot;USER&quot;},&quot;name&quot;:&quot;password&quot;,&quot;type&quot;:&quot;VARCHAR&quot;},{&quot;parent&quot;:{&quot;name&quot;:&quot;USER&quot;},&quot;name&quot;:&quot;name&quot;,&quot;type&quot;:&quot;VARCHAR&quot;},{&quot;parent&quot;:{&quot;name&quot;:&quot;USER&quot;},&quot;name&quot;:&quot;login&quot;,&quot;type&quot;:&quot;VARCHAR&quot;},{&quot;parent&quot;:{&quot;name&quot;:&quot;USER&quot;},&quot;name&quot;:&quot;email&quot;,&quot;type&quot;:&quot;VARCHAR&quot;},{&quot;parent&quot;:{&quot;name&quot;:&quot;USER&quot;},&quot;name&quot;:&quot;id&quot;,&quot;type&quot;:&quot;VARCHAR&quot;}],&quot;wheres&quot;:[{&quot;column&quot;:{&quot;parent&quot;:{&quot;name&quot;:&quot;USER&quot;},&quot;name&quot;:&quot;name&quot;,&quot;type&quot;:&quot;VARCHAR&quot;},&quot;operator&quot;:&quot;\u003d&quot;,&quot;values&quot;:[&quot;$P{BIA}&quot;]}],&quot;persistenceUnitName&quot;:&quot;app&quot;},&quot;main&quot;:true}]"/>
+	<parameter name="DATA_LIMIT" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[5]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+    ROLE.fk_user ,
+    ROLE.id ,
+    USER.theme ,
+    USER.picture ,
+    USER.password ,
+    USER.name ,
+    USER.login ,
+    USER.email ,
+    USER.id 
+FROM
+    ROLE ,
+    USER 
+WHERE
+    USER.id = ROLE.fk_user AND
+    USER.name = $P{BIA} 
+limit $P{DATA_LIMIT}]]>
+	</queryString>
+	<title>
+		<band height="79"/>
+	</title>
+	<pageHeader>
+		<band height="35"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61"/>
+	</columnHeader>
+	<detail>
+		<band height="125"/>
+	</detail>
+	<columnFooter>
+		<band height="45"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54"/>
+	</pageFooter>
+	<summary>
+		<band height="42"/>
+	</summary>
+</jasperReport>

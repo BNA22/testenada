@@ -80,16 +80,6 @@ public class Role implements Serializable {
   }
 
   /**
-   * Define user
-   * @param user user
-   * @generated
-   */
-  public Role setUser(User user){
-    this.user = user;
-    return this;
-  }
-
-  /**
    * @generated
    */
   @Override
@@ -112,5 +102,15 @@ public class Role implements Serializable {
     result = 31 * result + ((user == null) ? 0 : user.hashCode());
     return result;
   }
-
-}
+  
+      /**
+   * Define user
+   * @param user user
+   * @generated
+   */
+ public Role setUser(User user){
+    this.user = user;
+    return this;
+ }
+ 
+ }

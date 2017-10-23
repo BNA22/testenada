@@ -112,5 +112,5 @@ public class Role implements Serializable {
     this.user = user;
     return this;
  }
- 
+ //*** atualizado
  }

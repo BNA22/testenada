@@ -266,7 +266,13 @@ angular.module('datasourcejs', [])
         }
 
         this.openImage = function(data) {
-            $window.open('data:image/png;base64,' + data, '_blank', 'height=300,width=400');
+          if (data.indexOf('https://') == -1 && data.indexOf('http://') == -1)  {
+            var  value = 'data:image/png;base64,' + data;
+            var w = $window.open("", '_blank', 'height=300,width=400');
+            w.document.write('<img src="'+ value + '"/>');
+          } else {
+             $window.open(data, '_blank', 'height=300,width=400');
+          }
         };
 
         this.byteSize = function(base64String) {
@@ -1207,6 +1213,11 @@ angular.module('datasourcejs', [])
                 if (from.hasOwnProperty(key) && key.indexOf('$') == -1) {
                     to[key] = this.copy(from[key]);
                 }
+            }
+            //Verificando os campos que não existem mais no registro (Significa que foi setado para nulo)
+            for (var key in to) {
+              if (from[key] == undefined)
+                delete to[key];        
             }
 
             return to;

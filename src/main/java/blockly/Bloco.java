@@ -22,7 +22,7 @@ public class Bloco {
 
 			public Var call() throws Exception {
 				item = cronapi.database.Operations.query(Var.valueOf("app.entity.User"),
-						Var.valueOf("select u.login from User u"), Var.VAR_NULL);
+						Var.valueOf("select u.login from User u"));
 				System.out.println(item.getObjectAsString());
 				return Var.VAR_NULL;
 			}

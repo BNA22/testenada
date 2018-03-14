@@ -10,16 +10,15 @@ import cronapi.rest.security.CronappSecurity;
 
 
 /**
- * Classe que representa a tabela ROLE
+ * Classe que representa a tabela CARROPESSOA
  * @generated
  */
 @Entity
-@IdClass(RolePK.class)
-@Table(name = "\"ROLE\"")
+@Table(name = "\"CARROPESSOA\"")
 @XmlRootElement
-@CronappSecurity(post = "Administrators", get = "Administrators", delete = "Administrators", put = "Administrators")
-@JsonFilter("app.entity.Role")
-public class Role implements Serializable {
+@CronappSecurity
+@JsonFilter("app.entity.CarroPessoa")
+public class CarroPessoa implements Serializable {
 
   /**
    * UID da classe, necessário na serialização
@@ -35,17 +34,26 @@ public class Role implements Serializable {
   private java.lang.String id = UUID.randomUUID().toString().toUpperCase();
 
   /**
-   * @generated
-   */
-  @Id
-  @JoinColumn(name="fk_user", nullable = false, referencedColumnName = "id", insertable=true, updatable=true)
-  private User user;
+  * @generated
+  */
+  @ManyToOne
+  @JoinColumn(name="fk_carro", nullable = true, referencedColumnName = "id", insertable=true, updatable=true)
+  
+  private Carro carro;
+
+  /**
+  * @generated
+  */
+  @ManyToOne
+  @JoinColumn(name="fk_pessoa", nullable = true, referencedColumnName = "id", insertable=true, updatable=true)
+  
+  private Pessoa pessoa;
 
   /**
    * Construtor
    * @generated
    */
-  public Role(){
+  public CarroPessoa(){
   }
 
 
@@ -64,28 +72,48 @@ public class Role implements Serializable {
    * @param id id
    * @generated
    */
-  public Role setId(java.lang.String id){
+  public CarroPessoa setId(java.lang.String id){
     this.id = id;
     return this;
   }
 
   /**
-   * Obtém user
-   * return user
+   * Obtém carro
+   * return carro
    * @generated
    */
   
-  public User getUser(){
-    return this.user;
+  public Carro getCarro(){
+    return this.carro;
   }
 
   /**
-   * Define user
-   * @param user user
+   * Define carro
+   * @param carro carro
    * @generated
    */
-  public Role setUser(User user){
-    this.user = user;
+  public CarroPessoa setCarro(Carro carro){
+    this.carro = carro;
+    return this;
+  }
+
+  /**
+   * Obtém pessoa
+   * return pessoa
+   * @generated
+   */
+  
+  public Pessoa getPessoa(){
+    return this.pessoa;
+  }
+
+  /**
+   * Define pessoa
+   * @param pessoa pessoa
+   * @generated
+   */
+  public CarroPessoa setPessoa(Pessoa pessoa){
+    this.pessoa = pessoa;
     return this;
   }
 
@@ -96,9 +124,8 @@ public class Role implements Serializable {
   public boolean equals(Object obj) {
     if (this == obj) return true;
     if (obj == null || getClass() != obj.getClass()) return false;
-    Role object = (Role)obj;
+    CarroPessoa object = (CarroPessoa)obj;
     if (id != null ? !id.equals(object.id) : object.id != null) return false;
-    if (user != null ? !user.equals(object.user) : object.user != null) return false;
     return true;
   }
 
@@ -109,7 +136,6 @@ public class Role implements Serializable {
   public int hashCode() {
     int result = 1;
     result = 31 * result + ((id == null) ? 0 : id.hashCode());
-    result = 31 * result + ((user == null) ? 0 : user.hashCode());
     return result;
   }
 

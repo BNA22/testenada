@@ -10,16 +10,15 @@ import cronapi.rest.security.CronappSecurity;
 
 
 /**
- * Classe que representa a tabela ROLE
+ * Classe que representa a tabela CARRO
  * @generated
  */
 @Entity
-@IdClass(RolePK.class)
-@Table(name = "\"ROLE\"")
+@Table(name = "\"CARRO\"")
 @XmlRootElement
-@CronappSecurity(post = "Administrators", get = "Administrators", delete = "Administrators", put = "Administrators")
-@JsonFilter("app.entity.Role")
-public class Role implements Serializable {
+@CronappSecurity
+@JsonFilter("app.entity.Carro")
+public class Carro implements Serializable {
 
   /**
    * UID da classe, necessário na serialização
@@ -35,17 +34,24 @@ public class Role implements Serializable {
   private java.lang.String id = UUID.randomUUID().toString().toUpperCase();
 
   /**
-   * @generated
-   */
-  @Id
-  @JoinColumn(name="fk_user", nullable = false, referencedColumnName = "id", insertable=true, updatable=true)
-  private User user;
+  * @generated
+  */
+  @Column(name = "Marca", nullable = true, unique = false, insertable=true, updatable=true)
+  
+  private java.lang.String marca;
+
+  /**
+  * @generated
+  */
+  @Column(name = "Placa", nullable = true, unique = false, insertable=true, updatable=true)
+  
+  private java.lang.String placa;
 
   /**
    * Construtor
    * @generated
    */
-  public Role(){
+  public Carro(){
   }
 
 
@@ -64,28 +70,48 @@ public class Role implements Serializable {
    * @param id id
    * @generated
    */
-  public Role setId(java.lang.String id){
+  public Carro setId(java.lang.String id){
     this.id = id;
     return this;
   }
 
   /**
-   * Obtém user
-   * return user
+   * Obtém marca
+   * return marca
    * @generated
    */
   
-  public User getUser(){
-    return this.user;
+  public java.lang.String getMarca(){
+    return this.marca;
   }
 
   /**
-   * Define user
-   * @param user user
+   * Define marca
+   * @param marca marca
    * @generated
    */
-  public Role setUser(User user){
-    this.user = user;
+  public Carro setMarca(java.lang.String marca){
+    this.marca = marca;
+    return this;
+  }
+
+  /**
+   * Obtém placa
+   * return placa
+   * @generated
+   */
+  
+  public java.lang.String getPlaca(){
+    return this.placa;
+  }
+
+  /**
+   * Define placa
+   * @param placa placa
+   * @generated
+   */
+  public Carro setPlaca(java.lang.String placa){
+    this.placa = placa;
     return this;
   }
 
@@ -96,9 +122,8 @@ public class Role implements Serializable {
   public boolean equals(Object obj) {
     if (this == obj) return true;
     if (obj == null || getClass() != obj.getClass()) return false;
-    Role object = (Role)obj;
+    Carro object = (Carro)obj;
     if (id != null ? !id.equals(object.id) : object.id != null) return false;
-    if (user != null ? !user.equals(object.user) : object.user != null) return false;
     return true;
   }
 
@@ -109,7 +134,6 @@ public class Role implements Serializable {
   public int hashCode() {
     int result = 1;
     result = 31 * result + ((id == null) ? 0 : id.hashCode());
-    result = 31 * result + ((user == null) ? 0 : user.hashCode());
     return result;
   }
 
